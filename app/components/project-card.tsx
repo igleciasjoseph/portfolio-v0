@@ -23,22 +23,23 @@ export default function ProjectCard({
   icon = "github",
 }: ProjectCardProps) {
   return (
-    <Card className="overflow-hidden flex flex-col h-full">
-      <div className="relative w-full pt-[56.25%] p-4 bg-muted">
+    <Card className="overflow-hidden flex flex-col">
+      <div className="relative w-full pt-[56.25%] p-4 bg-muted group">
         <Image
           src={image || "/placeholder.svg"}
           alt={title}
           fill
-          className="object-contain absolute top-0 left-0 transition-transform hover:scale-105 p-4"
+          className="object-contain absolute top-0 left-0 p-4 transition-transform duration-300 ease-in-out group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority
         />
       </div>
-      <CardContent className="p-4 flex flex-col h-[400px]">
-        <div className="min-h-[100px]">
+      <CardContent className="p-4 flex flex-col">
+        <div>
           <h3 className="font-semibold text-xl mb-2">{title}</h3>
           <p className="text-sm text-muted-foreground mb-2">{caption}</p>
         </div>
-        <div className="text-sm text-muted-foreground mb-4 flex-1">
+        <div className="text-sm text-muted-foreground mb-4">
           <p className="font-medium mb-1">About:</p>
           <ul className="list-disc pl-4 space-y-1">
             {description.map((item, index) => (
@@ -57,7 +58,7 @@ export default function ProjectCard({
           ))}
         </div>
       </CardContent>
-      <CardFooter className="p-4 pt-0 mt-auto">
+      <CardFooter className="p-4 pt-0">
         <Link
           href={link}
           target="_blank"

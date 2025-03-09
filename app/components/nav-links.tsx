@@ -1,32 +1,37 @@
 "use client"
 
 import Link from "next/link"
+import { useCallback } from "react"
 
 export default function NavLinks() {
+  const scrollToSection = useCallback((elementId: string) => {
+    const element = document.getElementById(elementId)
+    if (element) {
+      const headerHeight = 64
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+    }
+  }, [])
+
   return (
     <nav className="flex items-center space-x-6 text-sm font-medium">
-      <Link 
-        href="#about" 
+      <button 
         className="transition-colors hover:text-foreground/80"
-        scroll={false}
-        onClick={(e) => {
-          e.preventDefault();
-          document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
-        }}
+        onClick={() => scrollToSection('about')}
       >
         About
-      </Link>
-      <Link 
-        href="#projects" 
+      </button>
+      <button 
         className="transition-colors hover:text-foreground/80"
-        scroll={false}
-        onClick={(e) => {
-          e.preventDefault();
-          document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
-        }}
+        onClick={() => scrollToSection('projects')}
       >
         Projects
-      </Link>
+      </button>
       <Link 
         href="mailto:igleciasjoseph@gmail.com" 
         className="transition-colors hover:text-foreground/80"

@@ -10,22 +10,27 @@ import NavLinks from "./components/nav-links"
 export default function Page() {
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 py-4">
-        <div className="container max-w-7xl mx-auto flex items-center px-6">
-          <div className="mr-4 hidden md:flex">
-            <Link className="mr-6 flex items-center space-x-2" href="/">
-              <span className="hidden font-bold sm:inline-block px-3 py-2">Joseph Iglecias</span>
+      <header className="sticky top-0 z-50 w-full border-b bg-background py-4">
+        <div className="container max-w-7xl mx-auto flex items-center justify-between px-6">
+          <div className="flex items-center">
+            <Link className="flex items-center space-x-2" href="/">
+              <span className="font-bold px-3 py-2">Joseph Iglecias</span>
             </Link>
-            <NavLinks />
+            <div className="hidden md:flex">
+              <NavLinks />
+            </div>
           </div>
-          <a href="/igleciasjoseph.pdf" download="igleciasjoseph.pdf" className="ml-auto">
+          <a href="/igleciasjoseph.pdf" download="igleciasjoseph.pdf">
             <Button variant="outline">Download Resume</Button>
           </a>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto px-4 md:px-6">
-        <section id="about" className="py-12 md:py-24 lg:py-32">
+        <section 
+          id="about" 
+          className="py-12 md:py-24 lg:py-32"
+        >
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <Avatar className="h-40 w-40 mb-4">
               <AvatarImage src="/selfieFavicon.jpg" alt="Profile" className="object-cover" />
@@ -69,7 +74,10 @@ export default function Page() {
           </div>
         </section>
 
-        <section id="projects" className="py-8 md:py-16 lg:py-24">
+        <section 
+          id="projects" 
+          className="py-8 md:py-16 lg:py-24"
+        >
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">Projects</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <ProjectCard
@@ -117,7 +125,9 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="py-12 md:py-24 lg:py-32">
+        <section 
+          className="py-12 md:py-24 lg:py-32"
+        >
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">Tech Stack</h2>
           <TechStack />
         </section>
